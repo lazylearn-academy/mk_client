@@ -153,17 +153,13 @@ with tab3:
         else: 
             st.error(response["message"])
     
-        st.subheader("Предсказанное видео")
+        st.subheader("Предсказанное фото")
         best_folder = os.listdir(f"{os.getcwd()}/runs")[best_map_idx]
         print(best_folder)
-        model = YOLO(f'./runs/{best_folder}/weights/best.pt')
+        st.image(os.path.join(f"{os.getcwd()}/runs", os.path.join(best_folder, "val_batch1_pred.jpg")))
+        st.image(os.path.join(f"{os.getcwd()}/runs", os.path.join(best_folder, "val_batch2_pred.jpg")))
         # Открытие видео и получение предсказаний
-        input_video_path = './data/test_video.mp4'
-        yolo_video_path = './runs/predict/test_video.avi'
-        output_video_path = './runs/predict/test_video.mp4'
-        model.predict(input_video_path, save=True, project=f'{os.getcwd()}/runs', conf=0.2)
-        os.system(f"ffmpeg -i {yolo_video_path} -vcodec libx264 {output_video_path}")
-        # отрисовка
-        video_file = open(output_video_path, 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
+        st.subheader("Confusion Matrix")
+        st.image(os.path.join(f"{os.getcwd()}/runs", os.path.join(best_folder, "confusion_matrix.png")))
+
+        
