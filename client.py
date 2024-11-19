@@ -161,7 +161,7 @@ with tab3:
         input_video_path = './data/test_video.mp4'
         yolo_video_path = './runs/predict/test_video.avi'
         output_video_path = './runs/predict/test_video.mp4'
-        model.predict(input_video_path, save=True, project=f'{os.getcwd()}/runs')
+        model.predict(input_video_path, save=True, project=f'{os.getcwd()}/runs', conf=0.2)
         os.system(f"ffmpeg -i {yolo_video_path} -vcodec libx264 {output_video_path}")
         # отрисовка
         video_file = open(output_video_path, 'rb')

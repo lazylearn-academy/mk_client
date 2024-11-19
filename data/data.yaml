@@ -1,6 +1,6 @@
 train: train/images
 val: valid/images
+test: test/images
 
-nc: 2
-names: ['Кот', 'Собака']
-
+nc: 4
+names: ['ALASKAN_MALAMUTE', 'BORDER_COLLIE', 'CORGI', 'GERMAN_SHEPHERD']
